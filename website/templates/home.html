@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+    *{
+    margin:0;
+    padding:0;
+    text-decoration:none;
+    }
+.columns {
+
+  float: left;
+  width: 23.33%;
+  padding: 5px;
+}
+        .icons {
+        position:absolute;
+        top:0;
+        right:0;
+        margin-bottom:100px;
+        display:flex;
+        text-decoration:none;
+         padding-right:20px;
+         font-size:30px;
+
+        }
+        .icons .login{
+        margin-left:20px;
+        }
+ .head{
+color:green
+}
+.head2{
+color:red
+}
+body{
+background-color:lightblue
+}
+
+
+    </style>
+</head>
+<body >
+<h1 align="center" class="head">welcome to books online  </h1>
+<h2 class="head2" align="center">login to order  </h2><br>
+
+<form class="search" align="center" method="POST" action="/search/">
+    {% csrf_token %}
+<input type="text" name="search" placeholder="search.." >
+<input type="submit" value="🔍"><br><br><br>
+</form>
+
+<div class="icons">
+    <div class="signup"><a href="/signupform/">signup</a></div>
+<div class="login">
+<a href="/loginform/">login</a>
+</div>
+</div>
+{% for i in data %}
+<form class="columns" action="" method="POST">
+    {% csrf_token %}
+
+    <h3>Bookname: {{ i.bookname }} <br></h3>
+    <h3>price: {{ i.price }} Rs<br></h3>
+    <h3><img src="{{ i.image.url }}" height="100" width="100"><br></h3>
+    <input type= "submit"  value="order"><br>
+
+</form>
+{% endfor %}
+</body>
+</html>

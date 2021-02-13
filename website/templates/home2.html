@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .icons a{
+        position:relative;
+        top:0;
+        right:0;
+        margin-bottom:100px;
+        display:flex;
+        text-decoration:none;
+         padding-right:20px;
+         font-size:25px;
+        float:right;
+        }
+        .welcome{
+        color:brown
+        }
+        body{
+background-color:lightblue
+}
+    </style>
+</head>
+<body>
+
+<div class="icons">
+<a href="http://127.0.0.1:8000">Home</a>
+<a href="/cart/">Mycart</a>
+<a href="/logout/">Logout</a>
+<h1 class="welcome">welcome {{ user.username }}</h1>
+
+
+</div>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li>{% if message.tags %}  {% endif %} {{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<div class="icons">
+
+</div>
+
+
+<form class="search" align="center" method="POST" action="/search/">
+    {% csrf_token %}
+<input type="text" name="search" placeholder="search.." >
+<input type="submit" value="🔍">
+</form>
+{% for i in data %}
+Bookname:  {{ i.bookname }}<br>
+ Price: {{ i.price }}<br>
+
+<form action="/order/" method="POST">
+    {% csrf_token %}
+   <input value="{{ i.bookname }} " hidden name="bookname1">
+    <input value="{{ i.price}} " hidden name="price">
+<img src="{{ i.image.url }}" height="100" width="100"><br>
+   quantity: <input type="number" name="quantity"><br>
+    <input type = "submit" value="Add to Cart" ><br>
+    </form>
+{% endfor %}
+
+</body>
+</html>

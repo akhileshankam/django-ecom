@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    *{
+    margin:0;
+    padding:0;
+    text-decoration:none;
+    }
+        .ca{
+        color:green
+        }
+        .he{
+        color:blue
+        }
+         .icons {
+        position:absolute;
+        top:0;
+        right:0;
+        margin-bottom:100px;
+        display:flex;
+        text-decoration:none;
+         padding-right:20px;
+         font-size:30px;
+
+        }
+        .icons .login{
+        margin-left:20px;
+        }
+    </style>
+</head>
+<body>
+<div class="icons">
+    <div class="signup"><a href="http://127.0.0.1:8000/">Home</a></div>
+
+</div>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li>{% if message.tags %}  {% endif %} {{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<h3 class="he">Here is your list</h3><br>
+{% for i in dat %}
+<form method="POST" action="/confirm/">
+    {% csrf_token %}
+<h2>Bookname:{{ i.bookname1 }} **  Quantity:{{ i.quantity }}  ** Each price:{{ i.price }} Rs<br></h2>
+    <input value="{{ i.bookname1 }}" name="bookname1" hidden>
+    <input value="{{ i.quantity }}" name="quantity" hidden>
+    <input value="{{ i.price }}" name="price" hidden>
+<input type="submit" value="confirm">
+</form>
+{% endfor %}
+<h2 class="ca">total price={{ca}}</h2>
+<form method="POST" action="/cart2/" align="center">
+    {% csrf_token %}
+    <input type="submit" value=" Place Order ">
+</form>
+</body>
+</html>

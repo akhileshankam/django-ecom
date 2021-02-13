@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+     *{
+    margin:0;
+    padding:0;
+    text-decoration:none;
+    }
+
+       .icons {
+        position:absolute;
+        top:0;
+        right:0;
+        margin-bottom:100px;
+        display:flex;
+        text-decoration:none;
+         padding-right:20px;
+         font-size:30px;
+
+        }
+         .icons .login{
+        margin-left:20px;
+        }
+
+
+ .head{
+color:green
+}
+.head2{
+color:red
+}
+body{
+background-color:lightblue
+}
+
+    </style>
+</head>
+<body>
+<h1 align="center" class="head">welcome to books online  </h1>
+
+
+<form class="search" align="center" method="POST" action="/search/">
+    {% csrf_token %}
+<input type="text" name="search" placeholder="search.." >
+<input type="submit" value="🔍">
+</form>
+
+
+
+<form action="/order/" method="POST">
+    {% csrf_token %}
+    Bookname:{{bo}}<br>
+    Price:{{bo1}}<br>
+   <input value="{{bo}} " hidden name="bookname1">
+    <input value="{{bo1}} " hidden name="price">
+<img src="{{ bo2.url }}" height="100" width="100"><br>
+   quantity: <input type="number" name="quantity"><br>
+    <input type = "submit" value="Add to Cart" ><br>
+    </form>
+
+<div class="icons">
+    <div class="signup"><a href="http://127.0.0.1:8000/">Home</a></div>
+<div class="login">
+<a href="/logout/">logout</a>
+</div>
+</div>
+
+<form action="" method="POST">
+    {% csrf_token %}
+{% for i in data %}
+    <h3>Bookname: {{ i.bookname }} <br></h3>
+    <h3>price: {{ i.price }} Rs<br></h3>
+    <h3><img src="{{ i.image.url }}" height="100" width="100"><br></h3>
+    <input type= "submit"  value="order"><br>
+{% endfor %}
+</form>
+</body>
+</html>

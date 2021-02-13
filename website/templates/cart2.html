@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    *{
+    margin:0;
+    padding:0;
+    text-decoration:none;
+    }
+        .ca{
+        color:green
+        }
+        .he{
+        color:blue
+        }
+         .icons {
+        position:absolute;
+        top:0;
+        right:0;
+        margin-bottom:100px;
+        display:flex;
+        text-decoration:none;
+         padding-right:20px;
+         font-size:30px;
+
+        }
+        .icons .login{
+        margin-left:20px;
+        }
+    </style>
+</head>
+<body>
+<div class="icons">
+    <div class="signup"><a href="http://127.0.0.1:8000/">Home</a></div>
+
+</div>
+<h1 class="he">This is your final list</h1><br>
+{% for i in dat %}
+
+    {% csrf_token %}
+<h2>Bookname:{{ i.bookname1 }} **  Quantity:{{ i.quantity }}  ** Each price:{{ i.price }} Rs<br></h2>
+
+
+{% endfor %}
+<h2 class="ca">total price={{ca}}</h2>
+<h2> Total amount to be paid {{ca}} Rs</h2>
+</body>
+</html>

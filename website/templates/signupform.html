@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #bg{
+    background-size: 1250px 600px;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
+}
+.log{
+color:green
+}
+form{
+font-size:20px
+}
+.ho{
+font-size:20px
+
+}
+    </style>
+</head>
+<body id="bg" style="background-image: url('{% static "wall2.jpg"%}')";>
+
+<a class="ho" href="{% url 'home' %}" >home</a>
+<form action="/register/" method="POST" align="center">
+    {% csrf_token %}
+    <h2 class="log">Register Here </h2>
+    enter username:<br>
+    <input type="text" placeholder="enter username" name="username"><br>
+    enter password:<br>
+    <input type="password" placeholder="enter password" name="password"><br>
+    confirm password:<br>
+    <input type="password" placeholder="enter password" name="cpassword"><br>
+    <input type="submit">
+</form>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+       .icons {
+        position:absolute;
+        top:0;
+        right:0;
+        margin-bottom:100px;
+        display:flex;
+        text-decoration:none;
+         padding-right:20px;
+         font-size:30px;
+
+        }
+        .icons .login{
+        margin-left:20px;
+        }
+ .head{
+color:green
+}
+.head2{
+color:red
+}
+body{
+background-color:lightblue
+}
+
+    </style>
+</head>
+<body>
+<h1 align="center" class="head">welcome to books online  </h1>
+<h2 class="head2" align="center">login to order  </h2>
+
+<form class="search" align="center" method="POST" action="/search/">
+    {% csrf_token %}
+<input type="text" name="search" placeholder="search.." >
+<input type="submit" value="🔍">
+</form>
+
+<h1 align="center">{{ no }}</h1>
+
+
+<div class="icons">
+    <div class="signup"><a href="/signupform/">signup</a></div>
+<div class="login">
+<a href="/loginform/">login</a>
+<a href="http://127.0.0.1:8000/">Home</a>
+</div>
+</div>
+
+
+</form>
+</body>
+</html>
